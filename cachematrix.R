@@ -1,40 +1,27 @@
-## Put comments here that give an overall description of what your
-## functions do
 
-## Write a short comment describing this function
 
 makeCacheMatrix <- function(x = matrix()) {
-
+invrs <- NULL
+set <- function(y) {
+x <- y
+invrs <- NULL
 }
-
-
-## Write a short comment describing this function
+get <- function() x
+setinverse <- function(inverse) invrs <- inverse
+getinverse <- function() invrs
+list(set = set, get = get,
+setinverse = setinverse,
+getinverse = getinverse)
+}
 
 cacheSolve <- function(x, ...) {
-        ## Return a matrix that is the inverse of 'x'
+invrs <= x$getinverse()
+if(!is.null(invrs)) {
+message("getting cached data")
+return(invrs)
 }
-> make.power <- function(n) {
-+ pow <- function(x) {
-+ x^n
-+ }
-+ pow
-+ }
-> cube <- make.power(3)
-> square <- make.power(2)
-> cube(3)
-[1] 27
-> square(3)
-[1] 9
-> cube
-function(x) {
-x^n
+mat <- x$get()
+invrs <- solve(mat, ...)
+x$setinverse(invrs)
+invrs
 }
-<environment: 0x7ff460527478>
-> ls(environment(cube))
-[1] "n" "pow"
-> get("n", environment(cube))
-[1] 3
-> ls(environment(square))
-[1] "n" "pow"
-> get("n", environment(square))
-[1] 2
